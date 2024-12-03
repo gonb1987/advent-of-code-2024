@@ -23,6 +23,6 @@ def calc_similarity_score(list1: list[int], list2: list[int]):
     return similarity_score
 
 
-left_list, right_list = load_lists("input_data")
-print(f'Distance score is {calc_distance_score(left_list, right_list)}')
-print(f'Similarity score is {calc_similarity_score(left_list, right_list)}')
+one_list, two_list = load_lists("input_data")
+print(f'Distance score is {calc_distance_score(one_list, two_list)}')
+print(f'Similarity score is {calc_similarity_score(one_list, two_list)}')
