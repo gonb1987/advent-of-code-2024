@@ -68,7 +68,5 @@ if __name__ == '__main__':
                 if location in node_types:
                     antennas[location].append((i, j))
 
-
-
     print(get_antinodes(antennas, map_dimensions, part="part_1"))
     print(get_antinodes(antennas, map_dimensions, part="part_2"))
