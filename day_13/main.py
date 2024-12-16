@@ -20,8 +20,6 @@ def process_input_data(filename, part='part_1'):
         delta = 10000000000000
     prizes = map(lambda x: (int(x[0]) + delta, int(x[1]) + delta), prize_re.findall(raw_data))
     return zip(a_buttons, b_buttons, prizes)
-
-
 def main():
     filename = "input_data"
     part = 'part_1'
