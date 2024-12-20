@@ -1,7 +1,3 @@
-from collections import defaultdict
-from copy import deepcopy
-
-
 class Point:
     def __init__(self, x, y):
         self.x = x
@@ -36,13 +32,18 @@ class Point:
     def down(self):
         return Point(self.x, self.y + 1)
 
-    def get_surrounding(self, grid):
-        return {
-            self.up(): grid.get_cell_value(self.up()),
-            self.down(): grid.get_cell_value(self.down()),
-            self.left(): grid.get_cell_value(self.left()),
-            self.right(): grid.get_cell_value(self.right())
-        }
+    def get_pixel_distance(self, other):
+        return abs(self.x - other.x) + abs(self.y - other.y)
+
+    def get_surrounding(self, grid=None, diagonal=False):
+        surrounding = [self.left(), self.right(), self.up(), self.down()]
+        if diagonal:
+            surrounding.extend([self.left().up(), self.right().up(), self.right().down(), self.left().down()])
+        if grid is None:
+            return surrounding
+        else:
+            return {point: grid.get_cell_value(point) for point in surrounding}
+
     def get_tuple(self):
         return self.x, self.y
 
