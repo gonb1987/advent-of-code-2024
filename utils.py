@@ -64,8 +64,6 @@ class Grid:
     def look(self, direction, position=None):
         if position is None:
             position = self.position
-        if direction is None:
-            direction = self.direction
         if direction == 'east':
             position = Point(position.x + 1, position.y)
         elif direction == 'south':
@@ -89,7 +87,11 @@ class Grid:
         return self.grid_map[self.position.y][self.position.x]
 
 
+from itertools import islice, tee
 
 
-
-
+def item_and_next(some_iterable):
+    item_list, next_list = tee(some_iterable, 2)
+    next_list = islice(next_list, 1, None)
+    item_list = islice(item_list, len(some_iterable) - 1)
+    return zip(item_list, next_list)
